@@ -1,0 +1,10 @@
+require 'weatherboy'
+
+#Ask for location
+puts "Enter your location (city, postal or zipcode) for the local weather:"
+location = gets.chomp
+
+weatherboy = Weatherboy.new(location)
+
+w = weatherboy.current
+puts "Currently, the weather for #{location} is '#{w.weather}' with a temp of #{w.temp_c} degrees."
