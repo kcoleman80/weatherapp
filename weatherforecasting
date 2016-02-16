@@ -1,0 +1,39 @@
+require 'weatherboy'
+
+#Ask for location
+puts "Enter your location (city, postal or zipcode) for the local weather:"
+location = gets.chomp
+
+weatherboy = Weatherboy.new(location)
+
+w = weatherboy.current
+puts "Currently, the weather for #{location} is '#{w.weather}' with a temp of #{w.temp_c} degrees."
+
+#Weatherboy documentation
+#https://docs.omniref.com/ruby/gems/weatherboy/1.0.1
+#forecasting using weatherboy - === forecasts
+#The get_forecasts method retrieves future weather predictions in the form of an array of Weatherboy::Forecast objects.
+
+#f = weatherboy.forecasts
+#f[0].high_f
+#=> "43"
+#f[0].conditions
+#=> "Mostly Cloudy"
+
+#=== Attributes of the Weatherboy::Current class
+#* high_f
+#* high_c
+#* low_f
+#* low_c
+#* conditions
+#* icon (URL)
+#* pop (Possibility of Precipitation)
+#* title (This Afternoon, Tonight, Monday, etc)
+#* text (Full text of forecast)
+
+
+f = weatherboy.forecasts
+f.each_with_index do |value, index|
+    puts f[index].title
+    puts f[index].text
+end
